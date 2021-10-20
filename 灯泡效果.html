@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #2d2d2d;
+				min-height: 100vh;
+			}
+
+			.deng {
+				height: 80px;
+				width: 80px;
+				background-color: gray;
+				border-radius: 50%;
+				position: relative;
+			}
+
+			.deng::before {
+				content: '';
+				position: absolute;
+				width: 35px;
+				height: 80px;
+				left: 27.5%;
+				top: -55%;
+				background-color: gray;
+				border-top: 25px solid #000;
+				border-radius: 10px;
+			}
+
+			.deng span:nth-child(1) {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: -16px;
+				left: -4px;
+				background-color: transparent;
+				box-shadow: 20px 20px 0 10px gray;
+				border-bottom-right-radius: 40px;
+				transform: rotate(-18deg);
+
+			}
+
+			.deng span:nth-child(2) {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: -16px;
+				right: -3px;
+				background-color: transparent;
+				box-shadow: -20px 20px 0 10px gray;
+				border-bottom-left-radius: 40px;
+				transform: rotate(17deg);
+
+			}
+
+			.rope {
+				position: absolute;
+				left: calc(50% - 2px);
+				width: 4px;
+				background-color: #000000;
+				height: 50vh;
+				top: 0;
+			}
+
+			.swith {
+				position: absolute;
+				bottom: 50px;
+				width: 80px;
+				height: 80px;
+				background-image: linear-gradient(#fff, #cbcbcb, #fff);
+				right: 120px;
+				border: 3px solid #fff;
+				border-radius: 8px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.swith .btn {
+				position: relative;
+				width: 25px;
+				height: 40px;
+				background-image: linear-gradient(#919191, #ebebeb, #919191);
+				border: 2px solid black;
+				cursor: pointer;
+				border-radius: 6px;
+			}
+
+			.swith .btn::before {
+				content: '';
+				position: absolute;
+				width: 25px;
+				height: 40px;
+				background-image: linear-gradient(#fff, #fff);
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 85%;
+				display: block;
+				border-radius: 4px;
+			}
+
+			.on .swith .btn::before {
+				top: 15%;
+			}
+
+			body.on {
+				background: radial-gradient(#555, #111);
+			}
+
+			body.on .deng::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 120px;
+				height: 120px;
+				background-color: #fff;
+				border-radius: 50%;
+				filter: blur(40px); //滤镜 blur高斯模糊
+			}
+
+			body.on .deng::before {
+				background-color: #fff;
+			}
+
+			body.on .deng {
+				background-color: #fff;
+				box-shadow: 0 0 50px #FFFFFF,
+					0 0 100px #FFFFFF,
+					0 0 150px #FFFFFF,
+					0 0 200px #FFFFFF,
+					0 0 250px #FFFFFF,
+					0 0 300px #FFFFFF,
+					0 0 350px #FFFFFF,
+				;
+			}
+
+			body.on .deng span:nth-child(1) {
+				box-shadow: 20px 20px 0 10px #fff;
+			}
+
+			body.on .deng span:nth-child(2) {
+				box-shadow: -20px 20px 0 10px #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dengbox">
+			<audio src="audio/cd.mp3" id="audio" autosrart="false">
+
+			</audio>
+			<div class="rope">
+
+			</div>
+			<div class="deng">
+				<span></span>
+				<span></span>
+			</div>
+			<div class="swith">
+				<div class="btn">
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let btn = document.querySelector('.btn');
+		let body = document.querySelector('body');
+		let audio = document.querySelector('#audio');
+		/* function debounce(func,wait) {
+		    let timeout;
+		    return function () {
+		        let context = this;
+		        let args = arguments;
+		 
+		        if (timeout) clearTimeout(timeout);    //一调用debounce把timeout清掉
+		 
+		        let callNow = !timeout;    //把calNow变成true
+		        timeout = setTimeout(() => {
+		            timeout = null;
+		        }, wait)
+		 
+		        if (callNow) func.apply(context, args)  //一调用debounce把timeout清掉，使用这里不用等            
+		                                                  待wait秒就能调用func
+		    }
+		} */
+		btn.onclick = function() {
+			body.classList.toggle('on')
+			audio.play()
+		}
+	</script>
+	<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+	<script>
+		let setname = '';
+		/*
+		角色
+		haruto
+		hibiki
+		hijiki
+		izumi
+		koharu
+		miku
+		ni-j
+		nico
+		nietzsche
+		nipsilon
+		nito
+		shizuku
+		tororo
+		tsumiki
+		unitychan
+		wanko
+		z16
+		*/
+		setname = 'koharu';
+		L2Dwidget.init({
+			"model": {
+				//jsonpath控制显示那个小萝莉模型，
+				//(切换模型需要改动)
+				//				"https://unpkg.com/(live2d-widget-model-koharu)@1.0.5/assets/(koharu).model.json"
+				jsonPath: `https://unpkg.com/live2d-widget-model-${setname}@1.0.5/assets/${setname}.model.json`,
+				"scale": 1
+			},
+			"display": {
+				"position": "right", //看板娘的表现位置
+				"width": 50, //小萝莉的宽度
+				"height": 100, //小萝莉的高度
+				"hOffset": 0,
+				"vOffset": -20
+			},
+			"mobile": {
+				"show": true,
+				"scale": 0.5
+			},
+			"react": {
+				"opacityDefault": 0.7,
+				"opacityOnHover": 0.2
+			}
+		});
+	</script>
+	<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+</html>
